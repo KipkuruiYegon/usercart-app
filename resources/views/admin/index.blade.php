@@ -11,6 +11,13 @@
 <body>
     <h1>ADMIN PAGE DASHBOARD</h1>
 
+    <!-- Authentication -->
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+
+        <input type="submit" value="Logout">
+    </form>
+
 </body>
 
 </html>
