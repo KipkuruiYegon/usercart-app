@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -9,13 +9,22 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // Fetch products directly from the database
         $products = Product::select('id', 'name', 'description', 'price', 'image')->paginate(20);
-
-        // Return the products to the view
         return view('products', compact('products'));
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+
+        if ($product) {
+            return view('templateview.product', compact('product'));
+        }
+
+        return redirect()->route('shop')->with('error', 'Product not found');
+    }
 }
+
 
 
 

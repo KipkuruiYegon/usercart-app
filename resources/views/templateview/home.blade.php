@@ -399,7 +399,8 @@
                                     </div>
                                     <div class="cart-concern position-absolute">
                                         <div class="cart-button d-flex">
-                                            <a href="#" class="btn btn-medium btn-black">
+                                            <a href="{{ route('product.show', $product['id']) }}"
+                                                class="btn btn-medium btn-black">
                                                 Add to Cart
                                                 <svg class="cart-outline">
                                                     <use xlink:href="#cart-outline"></use>
@@ -409,7 +410,8 @@
                                     </div>
                                     <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                                         <h3 class="card-title text-uppercase">
-                                            <a href="#">{{ $product['name'] }}</a>
+                                            <a
+                                                href="{{ route('product.show', $product['id']) }}">{{ $product['name'] }}</a>
                                         </h3>
                                         <span class="item-price text-primary">KES {{ $product['price'] }}</span>
                                     </div>
@@ -426,56 +428,7 @@
     </section>
 
 
-
-    {{-- ------------------------- --}}
-
-    <section id="mobile-products" class="product-store position-relative padding-large no-padding-top">
-        <div class="container">
-            <div class="row">
-                <div class="display-header d-flex justify-content-between pb-3">
-                    <h2 class="display-7 text-dark text-uppercase">OUR FLASH SALE TODAY !!!</h2>
-                    <div class="btn-right">
-                        <a href="{{ url('shop') }}" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
-                    </div>
-                </div>
-                <div class="swiper product-swiper">
-                    <div class="swiper-wrapper">
-                        @forelse($products as $product)
-                            <div class="swiper-slide">
-                                <div class="product-card position-relative">
-                                    <div class="image-holder">
-                                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}"
-                                            class="img-fluid">
-                                    </div>
-                                    <div class="cart-concern position-absolute">
-                                        <div class="cart-button d-flex">
-                                            <a href="#" class="btn btn-medium btn-black">
-                                                Add to Cart
-                                                <svg class="cart-outline">
-                                                    <use xlink:href="#cart-outline"></use>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
-                                        <h3 class="card-title text-uppercase">
-                                            <a href="#">{{ $product['name'] }}</a>
-                                        </h3>
-                                        <span class="item-price text-primary">KES {{ $product['price'] }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                            <p>No products available at the moment.</p>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="swiper-pagination position-absolute text-center"></div>
-    </section>
-
-
+    {{-- -------------------------- --}}
 
 
     <section id="yearly-sale" class="bg-light-blue overflow-hidden mt-5 padding-xlarge"

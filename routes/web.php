@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+
 
 
 Route::get('/dashboard', function () {
@@ -21,3 +23,14 @@ require __DIR__.'/auth.php';
 
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
 Route::get('/', [TemplateController::class, 'index']);
+Route::post('cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::get('product/{id}', [ProductController::class, 'show'])->name('product.show');
+
+
+
+Route::prefix('cart')->group(function () {
+    Route::post('/add/{productId}', [CartController::class, 'addToCart']);
+    Route::delete('/remove/{productId}', [CartController::class, 'removeFromCart']);
+    Route::get('/view', [CartController::class, 'viewCart']);
+    Route::delete('/clear', [CartController::class, 'clearCart']);
+});
