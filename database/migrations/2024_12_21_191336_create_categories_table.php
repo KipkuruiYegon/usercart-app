@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\Category; // Ensure this is imported
+use App\Models\Product; // Ensure this is imported
+
 return new class extends Migration
 {
     /**
