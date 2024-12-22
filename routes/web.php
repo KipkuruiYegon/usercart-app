@@ -6,7 +6,6 @@ use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
-Route::get('/', [TemplateController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,3 +20,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
+Route::get('/', [TemplateController::class, 'index']);

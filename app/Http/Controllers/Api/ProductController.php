@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller; // Correct import for Controller
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    // Fetch all products
     public function index()
     {
-        $products = Product::all();
-        return response()->json($products);
-    }
+        // Fetch products directly from the database
+        $products = Product::select('id', 'name', 'description', 'price', 'image')->paginate(20);
 
-    // Fetch a single product
-    public function show(Product $product)
-    {
-        return response()->json($product);
+        // Return the products to the view
+        return view('products', compact('products'));
     }
 }
+
+
+
