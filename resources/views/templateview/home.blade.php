@@ -413,7 +413,7 @@
                                             <a
                                                 href="{{ route('product.show', $product['id']) }}">{{ $product['name'] }}</a>
                                         </h3>
-                                        <span class="item-price text-primary">KES {{ $product['price'] }}</span>
+                                        <span class="item-price text-primary">KSH {{ $product['price'] }}</span>
                                     </div>
                                 </div>
                             </div>
