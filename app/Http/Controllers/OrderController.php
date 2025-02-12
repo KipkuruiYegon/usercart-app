@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -18,16 +20,18 @@ class OrderController extends Controller
 
         $total = 0;
         foreach ($cart as $productId => $quantity) {
-            $product = \App\Models\Product::find($productId);
-            $total += $product->price * $quantity;
+            $product = Product::find($productId);
+            if ($product) {
+                $total += $product->price * $quantity;
+            }
         }
 
         $order = Order::create([
-            'items' => $cart,
+            'items' => json_encode($cart), // Convert array to JSON
             'total' => $total
         ]);
 
-        Redis::del($cartKey);
+        Redis::del($cartKey); // Clear cart after placing order
 
         return response()->json($order, 201);
     }
@@ -37,4 +41,3 @@ class OrderController extends Controller
         return response()->json(Order::all());
     }
 }
-
