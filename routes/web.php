@@ -35,3 +35,8 @@ Route::prefix('cart')->group(function () {
     Route::get('/view', [CartController::class, 'viewCart']);
     Route::delete('/clear', [CartController::class, 'clearCart']);
 });
+
+
+Route::get('/{any}', function () {
+    return view('index');  // Serve React's index.html
+})->where('any', '.*');  // This ensures that all routes go to index.html
