@@ -13,8 +13,9 @@
   }
 
   .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;  /* Allow items to wrap into the next row */
+    justify-content: space-around;  /* Space out the items */
     gap: 20px;
     list-style: none;
     padding: 0;
@@ -27,6 +28,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s;
+    width: 250px; /* Fixed width for the product items */
   }
 
   .product-item:hover {
