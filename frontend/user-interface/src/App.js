@@ -1,19 +1,22 @@
 import React from "react";
-import Navbar from "./components/NavBar"; // Import Navbar component
-import ProductList from "./components/ProductList"; // Import ProductList component
-import './App.css'; // Optional: to add custom styles
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Corrected import for Routes
+
+import NavBar from "./components/NavBar"; // Correct import for NavBar
+import ProductList from "./components/ProductList"; // Correct import for ProductList
+import './App.css';
 
 function App() {
   return (
-    <div>
-
-      <Navbar />
-
+    <Router>
+      <NavBar />
       <div className="main-content">
         <h1>Welcome to My E-commerce Store</h1>
-        <ProductList />
+        <Routes> {/* Using Routes instead of Switch */}
+          <Route path="/products" element={<ProductList />} /> {/* Using element prop */}
+          <Route path="/" element={<h1>Home Page</h1>} /> {/* Using element prop */}
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
