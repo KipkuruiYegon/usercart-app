@@ -1,25 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';  // Import Link for routing
+import React from "react";
+import { Link } from "react-router-dom";
+import "./NavBar.css";  // Import the CSS file for styling
 
-const Navbar = () => {
+const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">Shop</Link>
-        <ul className="navbar-links">
-          <li className="navbar-item">
-            <Link to="/products" className="navbar-link">Products</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/cart" className="navbar-link">Cart</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/about" className="navbar-link">About</Link>
-          </li>
-        </ul>
+        {/* Logo */}
+        <Link to="/" className="navbar-logo">
+          JUMIA
+        </Link>
+
+        {/* Search Bar */}
+        <div className="search-container">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Search products, brands and categories"
+          />
+          <button className="search-button">Search</button>
+        </div>
+
+        {/* Account and Cart */}
+        <div className="navbar-links">
+          <Link to="/account" className="navbar-link">Account</Link>
+          <Link to="/help" className="navbar-link">Help</Link>
+          <Link to="/cart" className="navbar-link cart-icon">
+            <span className="cart-icon-text">Cart</span>
+          </Link>
+        </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavBar;
